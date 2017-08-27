@@ -3,4 +3,5 @@
     <item name="geofence_list_button" type="id"/>
     <item name="geofence_map_button" type="id"/>
     <item name="location_animation" type="id"/>
+    <item name="map_view" type="id"/>
 </resources>
