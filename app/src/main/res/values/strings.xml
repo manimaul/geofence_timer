@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GeoTimer</string>
-    <string name="begin">Begin</string>
+    <string name="geofence_map">Geofence Map</string>
+    <string name="geofence_list">Geofence List</string>
 </resources>
