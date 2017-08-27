@@ -33,4 +33,5 @@ dependencies {
     //https://developers.google.com/android/guides/setup
     compile "com.google.android.gms:play-services-location:$google_play_services_version"
     compile "com.google.android.gms:play-services-maps:$google_play_services_version"
+    compile "com.airbnb.android:lottie:$lottie_version"
 }
