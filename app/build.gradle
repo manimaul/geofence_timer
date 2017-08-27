@@ -30,8 +30,15 @@ dependencies {
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    //https://developers.google.com/android/guides/setup
+    // Google https://developers.google.com/android/guides/setup
     compile "com.google.android.gms:play-services-location:$google_play_services_version"
     compile "com.google.android.gms:play-services-maps:$google_play_services_version"
+
+    // Lottie
     compile "com.airbnb.android:lottie:$lottie_version"
+
+    // Rx
+    compile "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    compile "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
 }
