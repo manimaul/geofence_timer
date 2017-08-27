@@ -1,7 +1,11 @@
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
+apply plugin: 'kotlin-kapt'
 
 android {
+    dataBinding {
+        enabled = true
+    }
     compileSdkVersion sdk_version
     buildToolsVersion build_tools_version
     defaultConfig {
@@ -22,6 +26,7 @@ android {
 
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
+    kapt "com.android.databinding:compiler:$data_binding_version"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version", {
         exclude group: "com.android.support", module: "support-annotations"
     })
