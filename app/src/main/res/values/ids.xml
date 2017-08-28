@@ -4,4 +4,6 @@
     <item name="geofence_map_button" type="id"/>
     <item name="location_animation" type="id"/>
     <item name="map_view" type="id"/>
+    <item name="add_cursor" type="id"/>
+    <item name="add_button" type="id"/>
 </resources>

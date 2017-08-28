@@ -2,4 +2,5 @@
     <string name="app_name">GeoTimer</string>
     <string name="geofence_map">Geofence Map</string>
     <string name="geofence_list">Geofence List</string>
+    <string name="add_geofence">ADD GEOFENCE</string>
 </resources>
