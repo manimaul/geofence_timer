@@ -24,20 +24,13 @@ class GeoFenceMap : Activity() {
     private lateinit var viewBinding: ActivityGeoFenceMapBinding
     private val mapFragment: MapFragment
         get() = fragmentManager.findFragmentById(R.id.map_view) as MapFragment
+    private val googleMapBiFunction = BiFunction<Any, GoogleMap, GoogleMap> { _, gMap -> gMap }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_geo_fence_map)
         connectViewBindingEvents(viewBinding)
-
-        requestPermissions(fragmentManager, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
-        .observeOn(schedulers.main).filter { permission ->
-            permission.first().grantResult == PermissionChecker.PERMISSION_GRANTED
-        }
-        .withLatestFrom(mapFragment.getMapAsyncObservable(), BiFunction<Any, GoogleMap, GoogleMap> { _, gMap -> gMap })
-        .subscribe { gMap ->
-            gMap.isMyLocationEnabled = true
-        }
+        connectLocationEnableEvents()
     }
 
     override fun onDestroy() {
@@ -45,19 +38,30 @@ class GeoFenceMap : Activity() {
         compositeDisposable.clear()
     }
 
-    private fun connectViewBindingEvents(binding: ActivityGeoFenceMapBinding) {
-        val googleMap = mapFragment.getMapAsyncObservable()
-        val addGeofence = RxView.clicks(binding.addButton)
-                .withLatestFrom(googleMap, BiFunction<Any, GoogleMap, GoogleMap> { _, gMap -> gMap })
+    private fun connectLocationEnableEvents() {
+        compositeDisposable.add(requestPermissions(fragmentManager, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+                .observeOn(schedulers.main)
+                .filter { permission ->
+                    permission.first().grantResult == PermissionChecker.PERMISSION_GRANTED
+                }
+                .withLatestFrom(mapFragment.getMapAsyncObservable(), googleMapBiFunction)
+                .subscribe { gMap ->
+                    gMap.isMyLocationEnabled = true
+                })
+    }
 
-        compositeDisposable.add(addGeofence.observeOn(schedulers.main).subscribe { gMap ->
-            val center = gMap.cameraPosition.target
-            val options = CircleOptions()
-                    .center(center)
-                    .radius(.25 * metersPerMile)
-                    .strokeColor(Color.BLUE)
-            gMap.addCircle(options)
-        })
+    private fun connectViewBindingEvents(binding: ActivityGeoFenceMapBinding) {
+        compositeDisposable.add(RxView.clicks(binding.addButton)
+                .withLatestFrom(mapFragment.getMapAsyncObservable(), googleMapBiFunction)
+                .observeOn(schedulers.main)
+                .subscribe { gMap ->
+                    val center = gMap.cameraPosition.target
+                    val options = CircleOptions()
+                            .center(center)
+                            .radius(.25 * metersPerMile)
+                            .strokeColor(Color.BLUE)
+                    gMap.addCircle(options)
+                })
     }
 
 
