@@ -1,9 +1,11 @@
 package io.madrona.geotimer
 
+import android.Manifest
 import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.content.PermissionChecker
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.model.CircleOptions
@@ -27,6 +29,15 @@ class GeoFenceMap : Activity() {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_geo_fence_map)
         connectViewBindingEvents(viewBinding)
+
+        requestPermissions(fragmentManager, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+        .observeOn(schedulers.main).filter { permission ->
+            permission.first().grantResult == PermissionChecker.PERMISSION_GRANTED
+        }
+        .withLatestFrom(mapFragment.getMapAsyncObservable(), BiFunction<Any, GoogleMap, GoogleMap> { _, gMap -> gMap })
+        .subscribe { gMap ->
+            gMap.isMyLocationEnabled = true
+        }
     }
 
     override fun onDestroy() {

@@ -30,6 +30,7 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version", {
         exclude group: "com.android.support", module: "support-annotations"
     })
+    compile "com.android.support:support-v13:$android_support_version"
     compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     testCompile "junit:junit:$junit_version"
 
