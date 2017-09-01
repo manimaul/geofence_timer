@@ -9,7 +9,9 @@
         android:layout_height="match_parent"
         tools:context="io.madrona.geotimer.GeoFenceMap">
 
-        <com.google.android.gms.maps.MapView
+        <fragment
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:tag="mapFragment"
             android:id="@id/map_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
