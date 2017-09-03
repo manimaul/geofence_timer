@@ -4,7 +4,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
-import io.madrona.geotimer.injector
+import io.madrona.geotimer.util.injector
 import io.reactivex.Observable
 
 

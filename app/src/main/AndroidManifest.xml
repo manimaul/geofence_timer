@@ -15,16 +15,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GeoFenceMap"/>
-        <activity android:name=".GeoFenceTimerList"/>
-        <service android:name=".GeofenceIntentService"/>
+        <activity android:name=".fragment.GeoFenceMap"/>
+        <activity android:name=".fragment.GeoFenceTimerList"/>
+        <service android:name=".service.GeofenceIntentService"/>
     </application>
 
 </manifest>

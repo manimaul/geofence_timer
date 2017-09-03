@@ -1,4 +1,4 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.util
 
 import io.reactivex.disposables.CompositeDisposable
 

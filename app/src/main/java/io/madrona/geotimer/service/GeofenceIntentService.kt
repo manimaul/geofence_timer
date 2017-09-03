@@ -1,4 +1,4 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.service
 
 import android.app.IntentService
 import android.content.Intent

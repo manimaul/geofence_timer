@@ -1,4 +1,4 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.util
 
 import android.app.Fragment
 import android.app.FragmentManager

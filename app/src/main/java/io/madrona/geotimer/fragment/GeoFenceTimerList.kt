@@ -1,7 +1,8 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.fragment
 
 import android.app.Activity
 import android.os.Bundle
+import io.madrona.geotimer.R
 
 class GeoFenceTimerList : Activity() {
 

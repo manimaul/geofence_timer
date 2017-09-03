@@ -1,4 +1,4 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.fragment
 
 import android.Manifest
 import android.app.Activity
@@ -10,7 +10,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.model.CircleOptions
 import com.jakewharton.rxbinding2.view.RxView
+import io.madrona.geotimer.R
 import io.madrona.geotimer.databinding.ActivityGeoFenceMapBinding
+import io.madrona.geotimer.util.injector
 import io.madrona.geotimer.extensions.getMapAsyncObservable
 import io.reactivex.functions.BiFunction
 
@@ -39,7 +41,7 @@ class GeoFenceMap : Activity() {
     }
 
     private fun connectLocationEnableEvents() {
-        compositeDisposable.add(requestPermissions(fragmentManager, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+        compositeDisposable.add(io.madrona.geotimer.util.requestPermissions(fragmentManager, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
                 .observeOn(schedulers.main)
                 .filter { permission ->
                     permission.first().grantResult == PermissionChecker.PERMISSION_GRANTED

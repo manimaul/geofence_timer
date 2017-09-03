@@ -1,11 +1,15 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.activity
 
 import android.app.Activity
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.jakewharton.rxbinding2.view.RxView
+import io.madrona.geotimer.fragment.GeoFenceMap
+import io.madrona.geotimer.fragment.GeoFenceTimerList
+import io.madrona.geotimer.R
 import io.madrona.geotimer.databinding.ActivitySplashBinding
+import io.madrona.geotimer.util.injector
 
 class SplashActivity : Activity() {
 

@@ -1,4 +1,4 @@
-package io.madrona.geotimer
+package io.madrona.geotimer.util
 
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.madrona.geotimer.GeoFenceTimerList">
+    tools:context="io.madrona.geotimer.fragment.GeoFenceTimerList">
 
     <TextView
         android:layout_width="wrap_content"
